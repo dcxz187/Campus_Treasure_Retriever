@@ -1,0 +1,366 @@
+/* 信息发布 */
+.pubbox{
+	padding: 0 10px;
+}
+.pubMessage{
+	--boxshadow: 1px -1px 8px #ccc;
+	--padding:4px;
+	width: 100%;
+	overflow: hidden;
+}
+/* 图片信息 */
+.pubMessage .msg_title,
+.pubMessage .msg_info,
+.pubMessage .corMethod{
+	margin:10px 0;
+	border-radius:5px;
+	box-shadow: var(--boxshadow);
+	padding: var(--padding);
+}
+.pubMessage .msg_title input{
+	padding-left:10px;
+	font-size: 16px;
+	padding: 5px;
+}
+.pubMessage .msg_title{
+	border-bottom: 1px solid #ccc;
+}
+.pubMessage .msg_info textarea{
+	font-size: 16px;
+	width: 95%;
+	margin: auto;
+	height: 80px;
+}
+.pubMessage .msg_pictures{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-top: 20px;
+}
+.pubMessage .msg_pictures li{
+	box-sizing: border-box;
+	float: left;
+	margin: 4px;
+	width: 80px;
+	height: 80px;
+	border-radius: 5px;
+	border:1px dashed #C0C0C0;
+	position: relative;
+}
+.pubMessage .msg_pictures li:first-child{
+	background: #F1F1F1;
+}
+.pubMessage .msg_pictures li image{
+	width: 100%;
+	height: 100%;
+}
+.pubMessage .pictures i{
+	font-size: 30px;
+	line-height: 80px;
+	text-align: center;
+}
+.pubMessage .deleteImg{
+	position: absolute;
+	top:-5px;
+	right:-5px;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	background: red;
+	opacity: .8;
+	color: #fff;
+}
+/* 物品类别 */
+.pubClassify{
+	margin:10px 0;
+	padding:5px 0;
+	box-shadow: 2px 2px 5px #ccc;
+}
+.found-input{
+	padding:0 0 5px 10px;
+	font-size: 16px;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 2px 2px 5px #ccc;
+}
+.publish_btn{
+	margin: 30px 0;
+	background: #4588aa;
+}
+.publish-input{
+	padding:0 0 5px 10px;
+	font-size: 16px;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 2px 2px 5px #ccc;
+}
+.publish-input input{
+	padding:10px 5px;
+}
+.publish_btn{
+	margin: 30px 0;
+	background: #4588aa;
+}
+/* 卡证类识别样式 */
+.corCard_box{
+	width: 300px;
+	height: 150px;
+	margin:10px auto;
+	border:1px dashed #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.corCard_btn{
+	margin: auto;
+	--circleH:40px;
+	width: var(--circleH);
+	height: var(--circleH);
+	border-radius: 50%;
+	background: linear-gradient(#FF8080,#FF0000);
+	text-align: center;
+	line-height: var(--circleH);
+	color: #fff;
+}
+.corCard_text{
+	text-align: center;
+}
+.corCard_text view{
+	margin:5px 0;
+	font-size: 14px;
+}
+.corCard_text view:last-child{
+	font-size: 12px;
+	color: #CCCCCC;
+}
+.corPhoto{
+	margin:10px auto;
+	width: 300px;
+	height: 150px;
+	position: relative;
+	box-sizing: content-box;
+	padding:5px;
+	border:1px dashed #ccc;
+}
+.corPhoto i{
+	--iWH:20px;
+	width: var(--iWH);
+	height: var(--iWH);
+	background: red;
+	opacity: .8;
+	color: #fff;
+	position: absolute;
+	right: -5px;
+	top:-5px;
+	line-height: var(--iWH);
+	text-align: center;
+	z-index: 999;
+	font-size: ;
+}
+.corPhoto .scanImg{
+	z-index: 99;
+	position: absolute;
+	width: 300px;
+	height: 150px;
+	background: linear-gradient(#03a9f4,#03a9f4),
+				linear-gradient(transparent,#2196f3);
+	background-size: 100% 1.5%,10% 100%,100% 10%,100% 100%;
+	background-repeat: no-repeat,repeat,repeat,repeat;
+	background-position: 0 0;
+	clip-path: polygon(0% 0%,100% 0%,100% 1.5%,0% 1.5%);
+	animation: move 2s linear infinite;
+}
+@keyframes move{
+	to{
+		background-position: 0 100%;
+		clip-path: polygon(0% 0%,100% 0%,100% 100%,0% 100%);
+	}
+}
+.corPhoto image{
+	display: block;
+	width:100%;
+	height: 100%;
+}
+.corMessage{
+	display: block;
+	padding:15px;
+	font-size: 16px;
+	color: #5BA08C;
+	font-weight: bold;
+}
+.corMessage input{
+	border-bottom: 1px solid #ccc;
+	font-size: 16px;
+	padding-left:5px;
+	color: #000;
+	font-weight: normal;
+}
+/* 公共样式 */
+.corMethod{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top:10px;
+}
+.corMethod li{
+	margin:0 5px;
+	padding:4px 8px;
+	border-radius: 5px;
+	font-size: 16px;
+	border:1px solid #ccc;
+	color:#000;
+	font-weight: normal;
+}
+li.selected{
+	border:1px solid #4588aa;
+}
+.cor_input{
+	padding:0 0 5px 10px;
+	font-size: 16px;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 2px 2px 5px #ccc;
+}
+.cor_input input{
+	padding:10px 5px;
+}
+button.cor_btn{
+	margin: 30px 0;
+	background: #4588aa;
+	font-weight: normal;
+}
+/* 搜索框 */
+.search{
+	position: fixed;
+	top:0px;
+	left:0;
+	box-sizing: border-box;
+	width: 100%;
+	padding:5px;
+	height: 40px;
+	background: #fff;
+	display: block;
+	z-index: 11;
+}
+.search form{
+	display: block;
+	margin: auto;
+	width: 85%;
+	height: 100%;
+	border:1px solid #CCCCCC;
+	border-radius: 20px;
+	position: relative;
+	box-sizing: border-box;
+	padding:2px 10px;
+}
+.search input{
+	font-size: 14px;
+	display: block;
+	position: absolute;
+	width: 85%;
+}
+.icon_delete{
+	position: absolute;
+	right:10px;
+	top:5px;
+	color: #ccc;
+}
+.icon_search{
+	position: absolute;
+	right:0;
+	top:0;
+	font-size: 20px;
+	color: #ccc;
+	margin-left:5px;
+	height: 40px;
+	width: 10%;
+	text-align: center;
+	line-height: 40px;
+}
+.icon_search.show{
+	display: block;
+}
+.icon_search.hide{
+	display: none;
+}
+
+/* ta的发布 */
+.pub_goodList{
+	perspective: 1000px;
+	position: relative;
+}
+.pub_goodList .pub_goodCard,
+.pub_goodList .pub_goodInfo{
+	width: 100%;
+	z-index: 1;
+	position: absolute;
+	top:0;
+	left:0;
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+}
+.pub_goodList .pub_goodInfo{
+	z-index: 1;
+}
+.pub_goodList .pub_goodCard{
+	z-index: 2;
+	transform: rotateY(-180deg);
+}
+/* 我的发布动画 */
+.pub_msgList,
+.pub_cardList{
+	padding: 10px 10px 0 10px;
+}
+.pub_itemNone{
+	padding-top:40px;
+	text-align: center;
+	color: #C0C0C0;
+}
+.pub_loadingText{
+	text-align: center;
+	font-size: 14px;
+	height: 40px;
+	line-height: 40px;
+	color: #CCCCCC;
+}
+/* 发布的卡证信息 */
+.mycard{
+	box-shadow: 2px 2px 5px #C0C0C0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	margin-bottom: 5px;
+	color: #333;
+	border: 1px solid #346680;
+}
+.mycard view{
+	margin:5px 0;
+}
+.mycard .stucard,
+.mycard .idcard{
+	position: absolute;
+	top:0;		
+	right: 0;		
+	padding: 2px 8px;
+	background: #dd524d;
+	border-bottom-left-radius: 5px;
+	color:#fff;
+	font-size: 14px;
+}	
+.mycard .idcard
+{		
+	background: orange;
+}
+.mycard .relation{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.mycard .cut,
+.mycard .carddel{
+	border:1px solid #1aa134;
+	padding: 4px 6px;
+	font-size: 14px;
+	border-radius: 5px;
+}

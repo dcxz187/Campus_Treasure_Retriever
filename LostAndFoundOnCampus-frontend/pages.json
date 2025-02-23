@@ -1,0 +1,136 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path" : "pages/login/login",
+			"style" : {
+				"navigationBarTitleText": "登录",
+				"navigationBarBackgroundColor":"#4588aa"
+			}
+		},
+		{
+            "path" : "pages/about/about",
+            "style" : {
+				"navigationBarTitleText":"关于我们",
+				"navigationBarBackgroundColor":"#4588aa"
+			}
+        },
+		{
+		 	"path": "pages/index/index",
+		 	"style": {
+		 		"navigationBarTitleText": "首页",
+		 		"navigationBarBackgroundColor":"#4588aa",
+				"enablePullDownRefresh": true
+		 	}
+		 },
+		 {
+		 	"path":"pages/publish/publish",
+		 	"style":{
+		 		"navigationBarTitleText":"信息发布",
+		 		"navigationBarBackgroundColor":"#4588aa"
+		 	}
+		 },
+		 {
+		    "path" : "pages/myPublish/myPublish",
+		    "style" : {
+				"navigationBarTitleText":"我的发布",
+				"navigationBarBackgroundColor":"#4588aa",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+		    "path" : "pages/studentCard/studentCard",
+		    "style" : {
+				"navigationBarTitleText":"证件发布",
+				"navigationBarBackgroundColor":"#4588aa"
+			}
+		},
+		{
+		    "path" : "pages/Info/Info",
+		    "style" : {
+				"navigationBarTitleText":"物品详情",
+				"navigationBarBackgroundColor":"#4588aa"
+			}
+		},
+		{
+		    "path" : "pages/user/user",
+		    "style" : {
+				"navigationBarTitleText":"我的",
+				"navigationBarBackgroundColor":"#4588aa"
+			}
+		},
+        {
+            "path" : "pages/otherPublish/otherPublish",
+            "style" : {
+				"navigationBarTitleText":"ta的发布",
+				"navigationBarBackgroundColor":"#4588aa",
+				"enablePullDownRefresh": true
+			}
+        },
+        {
+            "path" : "pages/filterItem/filterItem",
+            "style" : {
+				"navigationBarTitleText":"搜索结果",
+				"navigationBarBackgroundColor":"#4588aa",
+				"enablePullDownRefresh": true
+			}
+        }
+        ,{
+            "path" : "pages/foundCard/foundCard",
+            "style" : {
+				"navigationBarTitleText":"搜索结果",
+				"navigationBarBackgroundColor":"#4588aa"
+			}
+        }
+        ,{
+            "path" : "pages/classifyList/classifyList",
+            "style" : {
+				"navigationBarBackgroundColor":"#4588aa",
+				"enablePullDownRefresh": true
+			}
+        }
+        ,{
+            "path" : "pages/myFind/myFind",
+            "style" : {
+				"navigationBarTitleText":"我的认领",
+				"navigationBarBackgroundColor":"#4588aa",
+				"enablePullDownRefresh": true
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar":{
+		"color":"#C0C0C0",
+		"selectedColor":"#4588aa",
+		"list":[
+			{
+				"pagePath":"pages/index/index",
+				"text":"首页",
+				"iconPath":"static/tabar/index-1.png",
+				"selectedIconPath":"static/tabar/index-0.png"
+			},
+			{
+				"pagePath":"pages/publish/publish",
+				"text":"发布",
+				"iconPath":"static/tabar/publish-1.png",
+				"selectedIconPath":"static/tabar/publish-0.png"
+			},
+			{
+				"pagePath":"pages/studentCard/studentCard",
+				"text":"学生卡/身份证",
+				"iconPath":"static/tabar/icon_namecard-1.png",
+				"selectedIconPath":"static/tabar/icon_namecard-0.png"
+			},
+			{
+				"pagePath":"pages/user/user",
+				"text":"我的",
+				"iconPath":"static/tabar/user-1.png",
+				"selectedIconPath":"static/tabar/user-0.png"
+			}
+		]
+	}
+}
