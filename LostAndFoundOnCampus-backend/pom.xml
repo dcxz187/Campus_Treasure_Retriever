@@ -2,13 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-<!--    springboot自动化配置依赖基础-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.0.RELEASE</version>
-        <relativePath/>
+        <version>3.4.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <properties>
+        <java.version>21</java.version>
+        <skipTests>true</skipTests>
+    </properties>
 <!--    app信息-->
     <groupId>com.gongSir</groupId>
     <artifactId>LostAndFoundOnCampus</artifactId>
@@ -16,31 +20,24 @@
     <name>LostAndFoundOnCampus</name>
     <description>wxApp for swpu lostAndFound</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <!--打包时跳过单元测试-->
-        <skipTests>true</skipTests>
-    </properties>
-
     <dependencies>
-        <!-- lombok插件,简化开发 -->
+        <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
-            <scope>false</scope>
+            <optional>true</optional>
         </dependency>
         <!-- 百度人工智能ocr -->
         <dependency>
             <groupId>com.baidu.aip</groupId>
             <artifactId>java-sdk</artifactId>
-            <version>4.4.1</version>
+            <version>4.16.19</version>
         </dependency>
         <!-- base64工具类Codec -->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.9</version>
+            <version>20041127.091804</version>
         </dependency>
         <!--        aes解密需要依赖的安全包-->
         <dependency>
@@ -52,7 +49,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
+            <version>4.5.14</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-codec</artifactId>
@@ -65,41 +62,34 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!--web依赖-->
+        <!--web起步依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <!--除去jackson-databind依赖-->
-            <!--<exclusions>-->
-            <!--<exclusion>-->
-            <!--<groupId>com.fasterxml.jackson.core</groupId>-->
-            <!--<artifactId>jackson-databind</artifactId>-->
-            <!--</exclusion>-->
-            <!--</exclusions>-->
         </dependency>
         <!--引入fastJson依赖-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
+            <version>2.0.56</version>
         </dependency>
-        <!--        spring-mybatis依赖-->
+        <!-- MyBatis 核心依赖 -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.1.0</version>
+            <version>3.0.4</version>
         </dependency>
         <!--        阿里数据库连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.9</version>
+            <version>1.2.24</version>
         </dependency>
         <!--阿里云短信SDK-->
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-core</artifactId>
-            <version>4.0.3</version>
+            <version>4.7.3</version>
             <exclusions>
                 <exclusion>
                     <artifactId>httpclient</artifactId>
@@ -107,11 +97,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--        mysql驱动依赖-->
+        <!-- MySQL 驱动（适配JDBC新版本） -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.2.0</version> <!-- 或保持您当前的9.1.0 -->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -155,7 +145,7 @@
         <dependency>
             <groupId>com.vdurmont</groupId>
             <artifactId>emoji-java</artifactId>
-            <version>4.0.0</version>
+            <version>5.1.1</version>
             <exclusions>
                 <exclusion>
                     <artifactId>json</artifactId>
@@ -168,20 +158,37 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <version>3.0.0</version>
         </dependency>
 
         <!--jwt-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.9.0</version>
+            <version>0.12.6</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version> <!-- 或最新版本 -->
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version> <!-- 或最新版本 -->
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version> <!-- 或最新版本 -->
+        </dependency>
+
 
         <!--<dependency>-->
         <!--<groupId>org.springframework.boot</groupId>-->

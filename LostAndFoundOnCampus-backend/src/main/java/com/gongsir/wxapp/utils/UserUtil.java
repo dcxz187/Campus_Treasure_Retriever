@@ -4,12 +4,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.gongsir.wxapp.configuration.UserConstantInterface;
 import com.gongsir.wxapp.controller.wxapi.UserController;
 import com.gongsir.wxapp.model.Card;
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+
+//import io.netty.handler.codec.base64.Base64;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import java.util.Base64;
+import java.nio.charset.StandardCharsets;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -190,40 +193,51 @@ public class UserUtil {
      * @param iv 偏移量
      * @return 个人信息
      */
-    public static JSONObject getUserInfo(String sessionKey, String encryptedData, String iv){
-        byte[] dataByte = Base64.decode(encryptedData);
-        byte[] keyByte = Base64.decode(sessionKey);
-        byte[] ivByte = Base64.decode(iv);
-        System.out.println(encryptedData);
-        System.out.println(sessionKey);
-        System.out.println(iv);
+    public static JSONObject getUserInfo(String sessionKey, String encryptedData, String iv) {
         try {
-            int base = 16;
-            if (keyByte.length % base != 0) {
-                int groups = keyByte.length / base + 1;
-                byte[] temp = new byte[groups * base];
-                Arrays.fill(temp, (byte) 0);
-                System.arraycopy(keyByte, 0, temp, 0, keyByte.length);
-                keyByte = temp;
+            // 使用标准库中的 Base64 解码器
+            byte[] dataByte = Base64.getDecoder().decode(encryptedData);
+            byte[] keyByte = Base64.getDecoder().decode(sessionKey);
+            byte[] ivByte = Base64.getDecoder().decode(iv);
+
+            System.out.println("Encrypted Data: " + encryptedData);
+            System.out.println("Session Key: " + sessionKey);
+            System.out.println("IV: " + iv);
+
+            try {
+                int base = 16;
+                if (keyByte.length % base != 0) {
+                    int groups = keyByte.length / base + 1;
+                    byte[] temp = new byte[groups * base];
+                    Arrays.fill(temp, (byte) 0);
+                    System.arraycopy(keyByte, 0, temp, 0, keyByte.length);
+                    keyByte = temp;
+                }
+
+                // 初始化
+                Security.addProvider(new BouncyCastleProvider());
+                Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+                SecretKeySpec spec = new SecretKeySpec(keyByte, "AES");
+                AlgorithmParameters parameters = AlgorithmParameters.getInstance("AES");
+                parameters.init(new IvParameterSpec(ivByte));
+                cipher.init(Cipher.DECRYPT_MODE, spec, parameters);
+
+                byte[] resultByte = cipher.doFinal(dataByte);
+                if (resultByte != null && resultByte.length > 0) {
+                    // 解析得到的所有敏感个人信息
+                    String result = new String(resultByte, StandardCharsets.UTF_8);
+                    JSONObject jsonObject = JSONObject.parseObject(result);
+                    System.out.println("个人信息:" + jsonObject.toJSONString());
+                    return jsonObject;
+                }
+            } catch (Exception e) {
+                logger.error("Error during AES decryption: {}", e.getMessage(), e);
             }
-            // 初始化
-            Security.addProvider(new BouncyCastleProvider());
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            SecretKeySpec spec = new SecretKeySpec(keyByte, "AES");
-            AlgorithmParameters parameters = AlgorithmParameters.getInstance("AES");
-            parameters.init(new IvParameterSpec(ivByte));
-            cipher.init(Cipher.DECRYPT_MODE, spec, parameters);
-            byte[] resultByte = cipher.doFinal(dataByte);
-            if (null != resultByte && resultByte.length > 0) {
-                //解析得到的所有铭感个人信息
-                String result = new String(resultByte, StandardCharsets.UTF_8);
-                JSONObject jsonObject = JSONObject.parseObject(result);
-                System.out.println("个人信息:"+jsonObject.toJSONString());
-                return jsonObject;
-            }
+        } catch (IllegalArgumentException e) {
+            logger.error("Invalid Base64 input: {}", e.getMessage(), e);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Unexpected error: {}", e.getMessage(), e);
         }
-        return  null;
+        return null;
     }
 }

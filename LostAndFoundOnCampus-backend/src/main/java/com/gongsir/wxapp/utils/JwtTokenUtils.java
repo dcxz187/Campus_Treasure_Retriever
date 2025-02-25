@@ -39,15 +39,15 @@ public class JwtTokenUtils {
      * @param isRememberMe 是否选择记住token
      * @return token
      */
-    public static String createToken(Map<String,Object> userInfo, boolean isRememberMe) {
+    public static String createToken(Map<String, Object> userInfo, boolean isRememberMe) {
         long expiration = isRememberMe ? EXPIRATION_REMEMBER : EXPIRATION;
-        if (Objects.isNull(userInfo)){
+        if (Objects.isNull(userInfo)) {
             userInfo = new HashMap<>();
         }
 
         return Jwts.builder()
                 //设置头部信息
-                .setHeaderParam("typ","JWT")
+                .setHeaderParam("typ", "JWT")
                 .setIssuer(ISS)
                 .setSubject("swpu-lostAndFound-app")
                 //装入自定义的用户信息
@@ -55,7 +55,7 @@ public class JwtTokenUtils {
                 .setIssuedAt(new Date())
                 //token过期时间
                 .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
-                .signWith(SignatureAlgorithm.HS512,SECRET)
+                .signWith(SignatureAlgorithm.HS512, SECRET) // 确保签名算法正确
                 .compact();
     }
 
@@ -66,12 +66,13 @@ public class JwtTokenUtils {
      */
     public static Claims verifyAndGetClaimsByToken(String token) {
         try {
-            return Jwts.parser()
-                    .setSigningKey(SECRET)
-                    .parseClaimsJws(token)
-                    .getBody();
-        }catch (Exception e){
-            LOGGER.debug("verify token error:[{}] ", e.getMessage());
+            return Jwts.parserBuilder() // 使用parserBuilder来替代parser
+                    .setSigningKey(SECRET) // 设置签名密钥
+                    .build() // 构建解析器
+                    .parseClaimsJws(token) // 解析JWT
+                    .getBody(); // 获取JWT body
+        } catch (Exception e) {
+            LOGGER.debug("Verify token error: [{}]", e.getMessage());
             return null;
         }
     }
@@ -79,5 +80,4 @@ public class JwtTokenUtils {
     public static String getTokenHeader() {
         return TOKEN_HEADER;
     }
-
 }

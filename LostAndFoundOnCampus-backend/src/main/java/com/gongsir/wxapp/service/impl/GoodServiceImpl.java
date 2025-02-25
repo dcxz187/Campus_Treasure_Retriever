@@ -7,9 +7,10 @@ import com.gongsir.wxapp.model.GoodExample;
 import com.gongsir.wxapp.model.User;
 import com.gongsir.wxapp.model.UserExample;
 import com.gongsir.wxapp.service.GoodService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+
 import java.util.ArrayList;
 import java.util.List;
 

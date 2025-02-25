@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/LostAndFoundOnCampus-backend/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot/tlias-web-managment/pom.xml" />
       </list>
     </option>
   </component>

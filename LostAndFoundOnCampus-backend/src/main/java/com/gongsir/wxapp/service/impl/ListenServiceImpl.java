@@ -4,9 +4,10 @@ import com.gongsir.wxapp.mapper.ListenMapper;
 import com.gongsir.wxapp.model.Listen;
 import com.gongsir.wxapp.model.ListenExample;
 import com.gongsir.wxapp.service.ListenService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 
 /**

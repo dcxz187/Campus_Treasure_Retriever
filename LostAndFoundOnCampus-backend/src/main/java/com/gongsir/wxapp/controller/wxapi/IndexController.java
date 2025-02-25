@@ -6,12 +6,13 @@ import com.gongsir.wxapp.model.Notice;
 import com.gongsir.wxapp.service.ImageService;
 import com.gongsir.wxapp.service.NoticeService;
 import io.swagger.annotations.Api;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 
 /**

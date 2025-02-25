@@ -6,13 +6,14 @@ import com.gongsir.wxapp.model.User;
 import com.gongsir.wxapp.service.GoodService;
 import com.gongsir.wxapp.service.UserService;
 import com.gongsir.wxapp.utils.Base64Util;
+import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
