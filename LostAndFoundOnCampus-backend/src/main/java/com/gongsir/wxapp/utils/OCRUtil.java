@@ -1,7 +1,8 @@
 package com.gongsir.wxapp.utils;
 
-import com.alibaba.fastjson.JSONObject;
+
 import com.baidu.aip.ocr.AipOcr;
+import org.json.JSONObject;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -13,9 +14,9 @@ public class OCRUtil {
     /**
      * 设置百度云AppID/AK/SK
      */
-    private static final String APP_ID = "17561118";
-    private static final String API_KEY = "CS5A1mgog1wtjBSayhFtPSDc";
-    private static final String SECRET_KEY = "1fiTNow1wXNBWNGo2cRGR0WNp0lY4flR";
+    private static final String APP_ID = "6502684";
+    private static final String API_KEY = "CQQckGFM7i7zCzVGffs5URRZ";
+    private static final String SECRET_KEY = "RMqaEtVk6cDsxnnAOHlWdhMSy7sI6Fp4";
     /**
      * 设置校园卡的模板id
      */
@@ -45,7 +46,7 @@ public class OCRUtil {
         // 调用身份证接口识别身份证
         String res = client.idcard(buf, "front", new HashMap<String, String>()).toString();
         System.out.println(res);
-        return JSONObject.parseObject(res);
+        return new JSONObject(res);
     }
 
     /**
@@ -62,8 +63,9 @@ public class OCRUtil {
         AipOcr aipOcr = new AipOcr(APP_ID, API_KEY, SECRET_KEY);
 
         // 调用接口识别信息，返回值是 JSONObject 类型
-        JSONObject res = aipOcr.custom(buf, STU_CARD_FONT, new HashMap<String, String>());
+//        JSONObject res = aipOcr.custom(buf, STU_CARD_FONT, new HashMap<String, String>());
 //        JSONObject res = aipOcr.custom(buf, STU_CARD_FONT,new HashMap<String, String>());
+        JSONObject res = aipOcr.idcard(buf, STU_CARD_FONT, new HashMap<String, String>());
 
         // 打印结果
         System.out.println(res.toString());

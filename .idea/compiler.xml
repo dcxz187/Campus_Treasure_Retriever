@@ -8,14 +8,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="LostAndFoundOnCampus" />
-        <module name="tlias-web-managment" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tlias-web-managment" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="LostAndFoundOnCampus" options="-parameters" />
-      <module name="tlias-web-managment" options="-parameters" />
+      <module name="tlias-web-managment" options="" />
     </option>
   </component>
 </project>

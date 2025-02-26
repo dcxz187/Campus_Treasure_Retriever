@@ -1,6 +1,6 @@
 package com.gongsir.wxapp.controller.wxapi;
 
-import com.alibaba.fastjson.JSONObject;
+
 import com.gongsir.wxapp.model.Card;
 import com.gongsir.wxapp.model.Listen;
 import com.gongsir.wxapp.model.User;
@@ -11,6 +11,7 @@ import com.gongsir.wxapp.utils.Base64Util;
 import com.gongsir.wxapp.utils.OCRUtil;
 import com.gongsir.wxapp.utils.UserUtil;
 import jakarta.annotation.Resource;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
