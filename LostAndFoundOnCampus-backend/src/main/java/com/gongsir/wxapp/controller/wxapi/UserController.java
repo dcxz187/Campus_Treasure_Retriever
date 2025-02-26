@@ -8,6 +8,7 @@ import com.gongsir.wxapp.utils.Base64Util;
 import com.gongsir.wxapp.utils.HttpClientUtil;
 import com.vdurmont.emoji.EmojiParser;
 import io.swagger.annotations.*;
+import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

@@ -4,11 +4,12 @@ import com.gongsir.wxapp.mapper.CardMapper;
 import com.gongsir.wxapp.model.Card;
 import com.gongsir.wxapp.model.CardExample;
 import com.gongsir.wxapp.service.CardService;
+import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 
 /**

@@ -10,12 +10,13 @@ import com.gongsir.wxapp.service.UserService;
 import com.gongsir.wxapp.utils.Base64Util;
 import com.gongsir.wxapp.utils.OCRUtil;
 import com.gongsir.wxapp.utils.UserUtil;
+import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
+
 import java.util.*;
 import java.util.stream.Collectors;
 

@@ -4,9 +4,10 @@ import com.gongsir.wxapp.mapper.ImageMapper;
 import com.gongsir.wxapp.model.Image;
 import com.gongsir.wxapp.model.ImageExample;
 import com.gongsir.wxapp.service.ImageService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 
 /**

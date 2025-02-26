@@ -4,9 +4,10 @@ import com.gongsir.wxapp.mapper.NoticeMapper;
 import com.gongsir.wxapp.model.Notice;
 import com.gongsir.wxapp.model.NoticeExample;
 import com.gongsir.wxapp.service.NoticeService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 
 /**
